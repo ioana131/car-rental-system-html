@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Car Rental System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <h1>Car Rental System</h1>
+    <p>Functioning prototype</p>
+  </header>
+
+  <nav class="menu">
+    <button onclick="showScreen('home')">Home</button>
+    <button onclick="showScreen('reservation')">Make Reservation</button>
+    <button onclick="showScreen('rental')">Initiate Rental</button>
+    <button onclick="showScreen('returns')">Vehicle Returns</button>
+    <button onclick="showScreen('reports')">Reports</button>
+  </nav>
+
+  <!-- HOME -->
+  <section id="home" class="screen active">
+    <div class="card">
+      <h2>Home Screen</h2>
+
+      <div class="home-grid">
+
+        <div class="home-box">
+          <h3>Make Reservation</h3>
+          <p>Create a new vehicle reservation.</p>
+          <button onclick="showScreen('reservation')">Open</button>
+        </div>
+
+        <div class="home-box">
+          <h3>Initiate Rental</h3>
+          <p>Search for a rental agreement and continue.</p>
+          <button onclick="showScreen('rental')">Open</button>
+        </div>
+
+        <div class="home-box">
+          <h3>Process Returns</h3>
+          <p>Record return details and payment.</p>
+          <button onclick="showScreen('returns')">Open</button>
+        </div>
+
+        <div class="home-box">
+          <h3>Management Reports</h3>
+          <p>Generate a simple management report.</p>
+          <button onclick="showScreen('reports')">Open</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATION -->
+  <section id="reservation" class="screen">
+    <div class="card">
+      <h2>Make Reservation</h2>
+
+      <label>Start Date</label>
+      <input type="date" id="start">
+
+      <label>End Date</label>
+      <input type="date" id="end">
+
+      <label>Vehicle Type</label>
+      <select id="vehicle">
+        <option>Economy</option>
+        <option>Compact</option>
+        <option>SUV</option>
+        <option>Luxury</option>
+      </select>
+
+      <label>Pickup Office</label>
+      <select id="office">
+        <option>Timisoara</option>
+        <option>Cluj</option>
+        <option>Bucharest</option>
+        <option>Iasi</option>
+      </select>
+
+      <div class="buttons">
+        <button onclick="reserve()">Reserve</button>
+        <button class="secondary" onclick="resetReservation()">Cancel</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="result" class="screen">
+    <div class="card">
+      <h2>Reservation Confirmed</h2>
+      <p id="output"></p>
+      <button onclick="showScreen('home')">OK</button>
+    </div>
+  </section>
+
+  <!-- RENTAL -->
+  <section id="rental" class="screen">
+    <div class="card">
+      <h2>Initiate Rental</h2>
+
+      <label>Rental Number</label>
+      <input type="text" id="rentalNumber" placeholder="Enter rental number">
+
+      <div class="buttons">
+        <button onclick="searchRental()">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSURANCE -->
+  <section id="insurance" class="screen">
+    <div class="card">
+      <h2>Insurance Options</h2>
+
+      <label>Select Insurance</label>
+      <select id="insuranceType">
+        <option>Basic Insurance</option>
+        <option>Full Insurance</option>
+        <option>Theft Protection</option>
+      </select>
+
+      <div class="buttons">
+        <button onclick="finishRental()">Confirm</button>
+        <button class="secondary" onclick="showScreen('rental')">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RETURNS -->
+  <section id="returns" class="screen">
+    <div class="card">
+      <h2>Process Vehicle Returns</h2>
+
+      <label>Rental Number</label>
+      <input type="text" id="returnRentalNumber">
+
+      <label>Return Date</label>
+      <input type="date" id="returnDate">
+
+      <label>Condition</label>
+      <select id="condition">
+        <option>Good</option>
+        <option>Damaged</option>
+      </select>
+
+      <div class="buttons">
+        <button onclick="processReturn()">Process</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RETURN RESULT -->
+  <section id="returnResult" class="screen">
+    <div class="card">
+      <h2>Rental Account</h2>
+      <p id="returnOutput"></p>
+      <button onclick="showScreen('home')">Accept</button>
+    </div>
+  </section>
+
+  <!-- REPORTS -->
+  <section id="reports" class="screen">
+    <div class="card">
+      <h2>Management Reports</h2>
+
+      <label>Report Type</label>
+      <select id="reportType">
+        <option>Reservations Report</option>
+        <option>Vehicle Availability Report</option>
+        <option>Financial Report</option>
+      </select>
+
+      <div class="buttons">
+        <button onclick="generateReport()">Generate</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPORT RESULT -->
+  <section id="reportResult" class="screen">
+    <div class="card">
+      <h2>Report</h2>
+      <p id="reportOutput"></p>
+      <button onclick="showScreen('home')">Close</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
